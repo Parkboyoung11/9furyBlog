@@ -18,7 +18,7 @@ class User < ApplicationRecord
   USER_ATTRIBUTE = [:name, :email, :password, :password_confirmation].freeze
 
   scope :get_users_to_show, (lambda do
-    select(:id, :name, :admin, :email).order(name: :asc).where(activated: true)
+    select(:id, :name, :admin, :email, :avatar).order(name: :asc).where(activated: true)
   end)
 
   validates :name, presence: true, length: {maximum: Settings.name_maximum}

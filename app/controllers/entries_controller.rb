@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.build entry_params
     if @entry.save
       flash[:success] = t "c_mc.entry_created"
-      redirect_to root_url
+      redirect_to @entry
     else
       @publish_posts = Entry.all.order(updated_at: :asc).page(params[:page])
                             .per Settings.microposts_per_page

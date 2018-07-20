@@ -6,11 +6,14 @@ class ChangeAvatarsController < ApplicationController
 
   def change
     if logged_in?
-      uploaded_io = params[:change_avatar][:avatar]
-      File.open((Rails.root.to_s + "/app/assets/images/#{current_user.id}.jpg"), "wb") do |file|
-        file.write(uploaded_io.read)
+      avatar_link = params[:change_avatar][:avatar]
+      if avatar_link == ""
+        flash[:danger] = "Please input your avatar link!"
+        redirect_to change_avatar_path
+      else
+        current_user.update_attribute(:avatar, avatar_link)
+        redirect_to current_user
       end
-      redirect_to current_user
     else
       redirect_to root_url
     end
