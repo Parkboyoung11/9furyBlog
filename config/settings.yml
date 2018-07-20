@@ -18,3 +18,4 @@ image_type: "image/jpeg,image/gif,image/png"
 users_per_page: 20
 comment_per_page: 8
 entries_per_home_page: 10
+u_host_production: "https://glacial-falls-19997.herokuapp.com"
